@@ -1,12 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import logo from '../../img/ai2.png'
 
 const Navbar = () => {
   return (
-    <div class="navbar justify-between" style={{backgroundImage: 'linear-gradient(to right, #00D29F, #0E83CC, #6A469B, #C40B6C, #D49A12)'}}>
+    <div
+      class="navbar bg-tertiary justify-between"
+      // style={{
+      //   backgroundImage:
+      //     "linear-gradient(to right, #00D29F, #0E83CC, #6A469B, #C40B6C, #D49A12)",
+      // }}
+    >
       <div class="flex justify-between w-full">
-        <a class="btn btn-ghost normal-case text-xl mr-5 text-white">
-          Ai Paint Roller
-        </a>
+        <img src={logo} className="w-[50px]" alt="" />
 
         <div class="dropdown ml-5">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -26,25 +32,19 @@ const Navbar = () => {
             </svg>
           </label>
           <ul
-            tabindex="0"
-            class="menu menu-compact dropdown-content ml-[-155px] mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            tabIndex="0"
+            class=" text-primary menu menu-compact dropdown-content ml-[-155px] mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 3</a>
+              <Link to="">Item 1</Link>
             </li>
           </ul>
         </div>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <ul class="text-white menu menu-horizontal p-0">
+        <ul class="text-primary menu menu-horizontal p-0">
           <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <a>Item 3</a>
+            <Link to="">Item 1</Link>
           </li>
         </ul>
       </div>
