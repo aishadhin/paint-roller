@@ -12,7 +12,7 @@ const Business = () => {
       <h2 className="text-center my-12 text-3xl uppercase font-bold">
         Business Summary
       </h2>
-      <div className="flex  justify-around my-12 gap-4 bg-primary">
+      <div className="lg:flex justify-around my-12 gap-4 bg-primary">
         <div className=" text-white text-center p-3">
           <span className="text-white text-5xl">
             <FontAwesomeIcon icon={faGlobeAmericas} />
