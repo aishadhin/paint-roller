@@ -1,6 +1,5 @@
 import React from "react";
 import bannerImg from "../../img/bnr.jpg";
-import Button from "../Shared/Button";
 
 const Banner = () => {
   return (
@@ -12,11 +11,11 @@ const Banner = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="pt-48 pb-48">
-        <h1 className="text-center paint text-8xl uppercase bold text-white">
+      <div className="md:pt-48 md:pb-48 pt-20 pb-20">
+        <h1 className="text-center paint text-3xl md:text-8xl uppercase bold text-white">
           Buy Paint Roller
         </h1>
-        <h3 className="text-center tracking-[1em] text-2xl uppercase bold text-white">
+        <h3 className="text-center md:tracking-[1em] md:text-4xl text-1xl uppercase bold text-white">
           In reasonable price
         </h3>
         <div className="text-center ">
