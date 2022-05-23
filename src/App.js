@@ -1,12 +1,14 @@
 import './App.css';
-import Banner from './Components/Home/Banner';
+import Home from './Components/Home/Home';
+import Footer from './Components/Shared/Footer';
 import Navbar from './Components/Shared/Navbar';
 
 function App() {
   return (
     <div>
       <Navbar></Navbar>
-      <Banner></Banner>
+      <Home></Home>
+      <Footer></Footer>
     </div>
   );
 }
