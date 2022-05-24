@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../../img/ai2.png'
+import logo from "../../img/ai2.png";
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
   return (
     <div
       class="navbar bg-tertiary justify-between"
@@ -44,7 +51,25 @@ const Navbar = () => {
       <div class="navbar-center hidden lg:flex">
         <ul class="text-primary menu menu-horizontal p-0">
           <li>
-            <Link to="">Item 1</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link to="/purchase">Purchase</Link>
+          </li>
+          <li>
+            <Link to="/aboutme">About Me</Link>
+          </li>
+          <li>
+            {user ? (
+              <button onClick={logout} className="">
+                SignOut
+              </button>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </li>
         </ul>
       </div>
