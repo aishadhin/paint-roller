@@ -63,11 +63,14 @@ const Navbar = () => {
             <Link to="/aboutme">About Me</Link>
           </li>
           <li>
-            {user ? (
+            {user ?
+              
               <button onClick={logout} className="">
-                SignOut
+                SignOut <span>{user.displayName}</span>
               </button>
-            ) : (
+              
+              
+            : (
               <Link to="/login">Login</Link>
             )}
           </li>

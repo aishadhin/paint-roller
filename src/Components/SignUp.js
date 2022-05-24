@@ -1,3 +1,4 @@
+import { sendEmailVerification } from "firebase/auth";
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -38,6 +39,10 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+    sendEmailVerification(auth.currentUser)
+  .then(() => {
+    console.log('send email')
+  });
     navigate("/");
   };
 
