@@ -10,16 +10,16 @@ const Blog = () => {
         </h3>
         <p>
           <ul className="mt-5">
-            <li className="">1. React code-splitting using dynamic import()</li>
-            <li className="">2. Image Compression</li>
-            <li className="">
+            <li>1. React code-splitting using dynamic import()</li>
+            <li>2. Image Compression</li>
+            <li>
               3. Maintaining component state locally when possible.
             </li>
-            <li className="">
+            <li>
               4. Prevent unnecessary re-rendering of React components by
               memorizing them.
             </li>
-            <li className="">5. React's windowing or list virtualization.</li>
+            <li>5. React's windowing or list virtualization.</li>
           </ul>
         </p>
       </div>
