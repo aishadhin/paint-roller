@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Purchase = () => {
-  const [product, setProduct] = useState({});
-  const [increase, setIncrease] = useState(1);
+  const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(10);
 
   useEffect(() => {
     fetch(`http://localhost:5000/product/${id}`)
@@ -11,14 +11,14 @@ const Purchase = () => {
       .then((data) => setProduct(data));
   }, []);
 
-  const handleIncrease = () => {
-    return setIncrease(increase + 1);
+  const qtyChange = (event) => {
+    console.log(event.target.value)
   };
-  const handleDecrease = () => {
-    if (increase <= product.minQty) {
-      return setIncrease(increase - 1);
+
+  const handleQty = () => {
+    if (quantity < product.minQty) {
+      alert("kam hobo na");
     } else {
-      return setIncrease(product.minQty);
     }
   };
 
@@ -36,23 +36,7 @@ const Purchase = () => {
           <p>Minimum Order Quantity: {product.minQty}</p>
           <p>Price per peace: ${product.priceUnit}</p>
           <div className="mt-6 flex align-center">
-            <button
-              onClick={handleDecrease}
-              className=" btn-primary btn text-2xl"
-            >
-              -
-            </button>
-            <input
-              type="text"
-              value={product.minQty > increase ? product.minQty : increase}
-              class="input input-bordered w-[25%]"
-            />
-            <button
-              onClick={handleIncrease}
-              className=" btn-primary btn text-2xl"
-            >
-              +
-            </button>
+             
           </div>
           <p>Total price: </p>
         </div>

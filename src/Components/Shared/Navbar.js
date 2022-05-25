@@ -11,18 +11,12 @@ const Navbar = () => {
     signOut(auth);
   };
   return (
-    <div
-      class="navbar bg-tertiary justify-between"
-      // style={{
-      //   backgroundImage:
-      //     "linear-gradient(to right, #00D29F, #0E83CC, #6A469B, #C40B6C, #D49A12)",
-      // }}
-    >
+    <div class="navbar bg-tertiary justify-between">
       <div class="flex justify-between w-full">
         <img src={logo} className="w-[50px]" alt="" />
 
         <div class="dropdown ml-5">
-          <label tabindex="0" class="btn btn-ghost lg:hidden">
+          <label tabIndex="0" class="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -57,24 +51,34 @@ const Navbar = () => {
             <Link to="/blog">Blog</Link>
           </li>
           <li>
-            <Link to="/purchase">Purchase</Link>
+            <Link to="/addreview">Add Review</Link>
           </li>
           <li>
             <Link to="/aboutme">About Me</Link>
           </li>
+          {user && (
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+          )}
           <li>
-            {user ?
-              
+            {user ? (
               <button onClick={logout} className="">
                 SignOut <span>{user.displayName}</span>
               </button>
-              
-              
-            : (
+            ) : (
               <Link to="/login">Login</Link>
             )}
           </li>
         </ul>
+      </div>
+      <div className="navbar-start">
+        <label
+          for="my-drawer-2"
+          class="btn btn-primary drawer-button lg:hidden"
+        >
+          Open drawer
+        </label>
       </div>
     </div>
   );

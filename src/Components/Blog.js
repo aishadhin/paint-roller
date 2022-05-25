@@ -17,7 +17,7 @@ const Blog = () => {
             </li>
             <li className="">
               4. Prevent unnecessary re-rendering of React components by
-              memoryizing them.
+              memorizing them.
             </li>
             <li className="">5. React's windowing or list virtualization.</li>
           </ul>
@@ -48,7 +48,7 @@ const Blog = () => {
       </div>
       <div className="bg-primary p-12 rounded text-white my-12">
         <h3 className="text-2xl">How does prototypical inheritance work?</h3>
-        <br/>
+        <br />
         <p>
           There is only one JavaScript construct and that is objects. Private
           properties are links to prototypes which hold links to other objects.
