@@ -6,6 +6,7 @@ import Blog from "./Components/Blog";
 import Dashboard from "./Components/Dashboard";
 import Home from "./Components/Home/Home";
 import LogIn from "./Components/LogIn";
+import MyProfile from "./Components/MyProfile";
 import Orders from "./Components/Orders";
 import Purchase from "./Components/Purchase";
 import RequireAuth from "./Components/RequireAuth";
@@ -43,6 +44,7 @@ function App() {
           <Route index element={<Orders />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="allusers" element={<AllUsers/>} />
+          <Route path="myprofile" element={<MyProfile/>} />
           <Route path="addnewproduct" element={<AddNewProduct/>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>

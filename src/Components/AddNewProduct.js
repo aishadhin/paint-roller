@@ -5,6 +5,7 @@ const AddNewProduct = () => {
     event.preventDefault();
     const name = event.target.name.value;
     const description = event.target.description.value;
+    const img = event.target.img.value;
     const orderQuantity = event.target.orderQuantity.value;
     const productQuantity = event.target.productQuantity.value;
     const price = event.target.price.value;
@@ -12,6 +13,7 @@ const AddNewProduct = () => {
     const theProduct = {
       name,
       description,
+      img,
       orderQuantity,
       productQuantity,
       price,
@@ -45,6 +47,12 @@ const AddNewProduct = () => {
           name="name"
           placeholder="Product Name"
         ></input>
+        <input
+          className="input input-bordered w-full max-w-xs my-1"
+          type="url"
+          name="img"
+          placeholder="Add Image URL"
+        ></input>
         <textarea
           name="description"
           class="textarea textarea-bordered md:w-90 w-[100%]"
@@ -66,6 +74,7 @@ const AddNewProduct = () => {
           className="input input-bordered w-full max-w-xs my-1"
           type="text"
           name="price"
+          value=""
           placeholder="Product Price"
         ></input>
         <input
