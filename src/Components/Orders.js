@@ -9,12 +9,16 @@ const Orders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/allorders?user=${user.email}`)
-        .then((res) => res.json())
+      fetch(`http://localhost:5000/allorders?user=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) =>  res.json())
         .then((data) => setOrderPlacer(data));
     }
   }, [user]);
-
 
   return (
     <div>
