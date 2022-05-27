@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
+import OrdersTable from "./OrdersTable";
 
 const Orders = () => {
   const [user] = useAuthState(auth);
@@ -9,7 +10,7 @@ const Orders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/allorders?user=${user.email}`, {
+      fetch(`https://lit-sands-52499.herokuapp.com/allorders?user=${user.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -38,15 +39,7 @@ const Orders = () => {
           <tbody>
             {orderPlacer
               .filter((order) => order.userEmail === user.email)
-              .map((p) => (
-                <tr>
-                  <th></th>
-                  <th>{p.productName}</th>
-                  <td>{p.order}</td>
-                  <td>{p.price}</td>
-                  <td>Blue</td>
-                </tr>
-              ))}
+              .map((p) => <OrdersTable key={p._id} p={p}></OrdersTable>)}
           </tbody>
         </table>
       </div>

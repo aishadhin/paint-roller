@@ -8,7 +8,7 @@ const Purchase = () => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://lit-sands-52499.herokuapp.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -45,7 +45,7 @@ const Purchase = () => {
       userName,
     };
 
-    fetch("http://localhost:5000/allorders", {
+    fetch("https://lit-sands-52499.herokuapp.com/allorders", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

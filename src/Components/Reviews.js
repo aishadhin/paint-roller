@@ -13,7 +13,7 @@ const Reviews = () => {
 
     const theReview = { userName, userEmail, review };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://lit-sands-52499.herokuapp.com/reviews", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
