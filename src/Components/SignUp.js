@@ -45,7 +45,6 @@ const SignUp = () => {
   .then(() => {
     console.log('send email')
   });
-    ;
   };
 
   if (token) {

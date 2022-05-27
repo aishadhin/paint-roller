@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddNewProduct from "./Components/AddNewProduct";
 import AllUsers from "./Components/AllUsers";
 import Blog from "./Components/Blog";
 import Dashboard from "./Components/Dashboard";
@@ -42,6 +43,7 @@ function App() {
           <Route index element={<Orders />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="allusers" element={<AllUsers/>} />
+          <Route path="addnewproduct" element={<AddNewProduct/>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
