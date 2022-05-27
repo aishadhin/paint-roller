@@ -9,12 +9,14 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
+import useToken from "./Hooks/UseToken";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [token] = useToken(user || gUser);
   const {
     register,
     formState: { errors },
@@ -43,11 +45,11 @@ const SignUp = () => {
   .then(() => {
     console.log('send email')
   });
-    navigate("/");
+    ;
   };
 
-  if (user || gUser) {
-    console.log(user || gUser);
+  if (token) {
+    navigate("/")
   }
   return (
     <div className="flex justify-center items-center h-screen">

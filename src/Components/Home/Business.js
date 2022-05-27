@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 const Business = () => {
   return (
-    <div className="px-12 ">
-      <h2 className="text-center my-12 text-3xl uppercase font-bold">
+    <div className="p-20 ">
+      <h2 className="my-12 text-3xl text-center font-bold text-primary uppercase">
         Business Summary
       </h2>
       <div className="lg:flex justify-around my-12 gap-4 bg-primary">

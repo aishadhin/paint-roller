@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../img/ai2.png";
+import logo from "../../img/ai5.png";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -12,8 +12,8 @@ const Navbar = () => {
   };
   return (
     <div class="navbar bg-tertiary justify-between">
-      <div class="flex justify-between w-full">
-        <img src={logo} className="w-[50px]" alt="" />
+      <div class="flex justify-between">
+        <img src={logo} className="md:w-1/3 w-1/4" alt="" />
 
         <div class="dropdown ml-5">
           <label tabIndex="0" class="btn btn-ghost lg:hidden">
@@ -34,12 +34,40 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex="0"
-            class=" text-primary menu menu-compact dropdown-content ml-[-155px] mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            class=" text-primary menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="">Item 1</Link>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/aboutme">About Me</Link>
+            </li>
+            {user && (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
+            <li>
+              {user ? (
+                <button onClick={logout} className="">
+                  SignOut <span>{user.displayName}</span>
+                </button>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
+        </div>
+        <div className="navbar-start md:hidden">
+          <label
+            for="my-drawer-2"
+            class="btn btn-primary drawer-button lg:hidden"
+          >
+            Open drawer
+          </label>
         </div>
       </div>
       <div class="navbar-center hidden lg:flex">
@@ -49,9 +77,6 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="/addreview">Add Review</Link>
           </li>
           <li>
             <Link to="/aboutme">About Me</Link>
@@ -71,14 +96,6 @@ const Navbar = () => {
             )}
           </li>
         </ul>
-      </div>
-      <div className="navbar-start">
-        <label
-          for="my-drawer-2"
-          class="btn btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
       </div>
     </div>
   );

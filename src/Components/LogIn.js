@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
+import useToken from "./Hooks/UseToken";
 const LogIn = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -16,10 +17,18 @@ const LogIn = () => {
     handleSubmit,
   } = useForm();
 
+  const [token] = useToken(user || gUser)
+
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
   let signInErrors;
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate])
 
   if (error || gError) {
     signInErrors = (
@@ -35,9 +44,7 @@ const LogIn = () => {
     signInWithEmailAndPassword(data.email, data.password);
   };
 
-  if (user || gUser) {
-    navigate(from, { replace: true });
-  }
+  
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="card w-96 bg-base-100 shadow-xl">

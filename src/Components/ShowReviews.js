@@ -10,8 +10,8 @@ const ShowReviews = () => {
   }, []);
   return (
     <div className="px-12">
-      <h2 className="my-12 text-3xl text-center">Users Reviews</h2>
-      <div className="grid my-12 grid-cols-3 gap-10 justify-around">
+      <h2 className="mt-20 text-3xl text-center text-primary">Users Reviews</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {
             reviews.map(review => <SingleReview review={review} key={review._id}></SingleReview>)
         }
