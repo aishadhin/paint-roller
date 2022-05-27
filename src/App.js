@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import AllUsers from "./Components/AllUsers";
 import Blog from "./Components/Blog";
 import Dashboard from "./Components/Dashboard";
 import Home from "./Components/Home/Home";
@@ -40,6 +41,7 @@ function App() {
         >
           <Route index element={<Orders />} />
           <Route path="reviews" element={<Reviews />} />
+          <Route path="allusers" element={<AllUsers/>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
