@@ -5,7 +5,7 @@ import OrdersTable from "./OrdersTable";
 
 const Orders = () => {
   const [user] = useAuthState(auth);
-
+  const [render ,setrender] = useState(false);
   const [orderPlacer, setOrderPlacer] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Orders = () => {
         .then((res) =>  res.json())
         .then((data) => setOrderPlacer(data));
     }
-  }, [user]);
+  }, [user,render]);
 
   return (
     <div>
@@ -34,12 +34,15 @@ const Orders = () => {
               <th>Quantity</th>
               <th>Price Per Unit</th>
               <th>Total Price</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {orderPlacer
               .filter((order) => order.userEmail === user.email)
-              .map((p) => <OrdersTable key={p._id} p={p}></OrdersTable>)}
+              .map((p) => (
+                <OrdersTable key={p._id} p={p} render={render} setrender={setrender}></OrdersTable>
+              ))}
           </tbody>
         </table>
       </div>

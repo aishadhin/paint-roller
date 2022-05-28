@@ -17,7 +17,7 @@ const LogIn = () => {
     handleSubmit,
   } = useForm();
 
-  const [token] = useToken(user || gUser)
+  const [token] = useToken(user || gUser);
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -28,7 +28,7 @@ const LogIn = () => {
     if (token) {
       navigate(from, { replace: true });
     }
-  }, [token, from, navigate])
+  }, [token, from, navigate]);
 
   if (error || gError) {
     signInErrors = (
@@ -41,10 +41,11 @@ const LogIn = () => {
   }
 
   const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+    signInWithEmailAndPassword(data.email, data.password).then(() => {
+      navigate(from);
+    });
   };
 
-  
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="shadow-xl card w-96 bg-base-100">
