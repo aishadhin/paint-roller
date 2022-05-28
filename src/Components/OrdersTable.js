@@ -6,8 +6,8 @@ const OrdersTable = ({ p, render, setrender }) => {
   const cancelHandler = (id) => {
     const check = window.confirm("Are You sure want to Delelte");
     if (check) {
-      fetch(`http://localhost:7000/cart-delete/${id}`,{
-        method:"DELETE",
+      fetch(`https://lit-sands-52499.herokuapp.com/cart-delete/${id}`, {
+        method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
