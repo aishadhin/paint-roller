@@ -37,7 +37,7 @@ const LogIn = () => {
   }
 
   if (loading || gLoading) {
-    return <button className="btn loading block mx-auto">loading</button>;
+    return <button className="block mx-auto btn loading">loading</button>;
   }
 
   const onSubmit = (data) => {
@@ -46,17 +46,17 @@ const LogIn = () => {
 
   
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="flex items-center justify-center h-screen">
+      <div className="shadow-xl card w-96 bg-base-100">
         <div className="card-body">
-          <h2 className="card-title justify-center">Login</h2>
+          <h2 className="justify-center card-title">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-xs">
+            <div className="w-full max-w-xs form-control">
               <label className="label">Email</label>
               <input
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full max-w-xs input input-bordered"
                 {...register("email", {
                   required: {
                     value: true,
@@ -77,12 +77,12 @@ const LogIn = () => {
                 )}
               </label>
             </div>
-            <div className="form-control w-full max-w-xs">
+            <div className="w-full max-w-xs form-control">
               <label className="label">Password</label>
               <input
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full max-w-xs input input-bordered"
                 {...register("password", {
                   required: {
                     value: true,
@@ -109,7 +109,7 @@ const LogIn = () => {
             </div>
             {signInErrors}
             <input
-              className="btn btn-primary w-full max-w-xs text-white"
+              className="w-full max-w-xs text-white btn btn-primary"
               type="submit"
               value="LOGIN"
             />
@@ -124,7 +124,7 @@ const LogIn = () => {
           <div className="divider">OR</div>
           <button
             onClick={() => signInWithGoogle()}
-            className="btn btn-outline bg-secondary text-white"
+            className="text-white btn btn-outline bg-secondary"
           >
             Continue With Google
           </button>

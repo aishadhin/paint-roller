@@ -26,7 +26,7 @@ const Purchase = () => {
     const userAddress = event.target.userAddress.value;
     const userNumber = event.target.userNumber.value;
 
-    if (order < product.minQty || order > product.avilableQty) {
+    if (order < +product.minQty || order > +product.avilableQty) {
       alert("Please order between minimum and available number of products");
       return;
     } else {
@@ -60,7 +60,7 @@ const Purchase = () => {
 
   return (
     <div className="p-6 w-[70%] mx-auto">
-      <h2 className="text-3xl font-bold text-center uppercase mb-6">
+      <h2 className="mb-6 text-3xl font-bold text-center uppercase">
         Purchase
       </h2>
       <div className="flex justify-around my-12">

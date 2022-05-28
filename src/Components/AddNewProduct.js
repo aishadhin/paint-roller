@@ -14,9 +14,9 @@ const AddNewProduct = () => {
       name,
       description,
       img,
-      orderQuantity,
-      productQuantity,
-      price,
+      minQty: orderQuantity,
+      avilableQty: productQuantity,
+      priceUnit:price,
     };
 
     fetch("https://lit-sands-52499.herokuapp.com/product", {
@@ -34,21 +34,21 @@ const AddNewProduct = () => {
 
   return (
     <div className="mx-auto my-12">
-      <h2 className="text-2xl text-primary uppercase font-bold">
+      <h2 className="text-2xl font-bold uppercase text-primary">
         add new product
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="mt-5 flex flex-col justify-center w-full"
+        className="flex flex-col justify-center w-full mt-5"
       >
         <input
-          className="input input-bordered w-full max-w-xs my-1"
+          className="w-full max-w-xs my-1 input input-bordered"
           type="text"
           name="name"
           placeholder="Product Name"
         ></input>
         <input
-          className="input input-bordered w-full max-w-xs my-1"
+          className="w-full max-w-xs my-1 input input-bordered"
           type="url"
           name="img"
           placeholder="Add Image URL"
@@ -59,26 +59,25 @@ const AddNewProduct = () => {
           placeholder="Description"
         ></textarea>
         <input
-          className="input input-bordered w-full max-w-xs my-1"
+          className="w-full max-w-xs my-1 input input-bordered"
           type="text"
           name="orderQuantity"
           placeholder="Minimum order Quantity"
         ></input>
         <input
-          className="input input-bordered w-full max-w-xs my-1"
+          className="w-full max-w-xs my-1 input input-bordered"
           type="text"
           name="productQuantity"
           placeholder="product Quantity"
         ></input>
         <input
-          className="input input-bordered w-full max-w-xs my-1"
+          className="w-full max-w-xs my-1 input input-bordered"
           type="text"
           name="price"
-          value=""
           placeholder="Product Price"
         ></input>
         <input
-          className="input input-bordered w-full max-w-xs my-1 btn btn-primary text-white"
+          className="w-full max-w-xs my-1 text-white input input-bordered btn btn-primary"
           type="submit"
           value="Add Product"
         />
@@ -88,3 +87,13 @@ const AddNewProduct = () => {
 };
 
 export default AddNewProduct;
+
+/*
+Object
+avilableQty: 180
+description: "Mini roller is ideal for doors, moldings, trim and cabinets. Applies a lint-free, sprayed-like finish. For alkyd enamels, urethanes, varnishes, stains, primers, specialty coatings. For super-smooth, smooth and semi-smooth surfaces."
+img: "https://m.media-amazon.com/images/I/71tO92QjB+L._AC_UL320_.jpg"
+minQty: 10
+name: "Finish Roller"
+priceUnit: 16
+*/

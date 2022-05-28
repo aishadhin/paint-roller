@@ -9,6 +9,7 @@ const Product = ({ product }) => {
   const getProductDetails = (id) => {
     navigate(`/purchase/${id}`);
   };
+  console.log(product.minQty);
 
   return (
     <div class="card card-compact bg-base-100 shadow-xl">
@@ -39,7 +40,7 @@ const Product = ({ product }) => {
     //   <p>Minimum order Quantity: {minQty}</p>
     //   <p>Available On Stock: {avilableQty}</p>
     //   <p>Price Per Unit: {priceUnit}</p>
-    //   <button onClick={()=>getProductDetails(_id)} className="btn btn-primary text-white">Buy Now</button>
+    //   <button onClick={()=>getProductDetails(_id)} className="text-white btn btn-primary">Buy Now</button>
     // </div>
   );
 };
