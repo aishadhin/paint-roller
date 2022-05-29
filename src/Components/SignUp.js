@@ -7,7 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import useToken from "./Hooks/UseToken";
 
@@ -23,6 +23,8 @@ const SignUp = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   let signInErrors;
 
@@ -35,33 +37,33 @@ const SignUp = () => {
   }
 
   if (loading || gLoading || updating) {
-    return <button className="btn loading block mx-auto">loading</button>;
+    return <button className="block mx-auto btn loading">loading</button>;
   }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    sendEmailVerification(auth.currentUser)
-  .then(() => {
-    console.log('send email')
-  });
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log("send email");
+      navigate(from);
+    });
   };
 
   if (token) {
-    navigate("/")
+    navigate("/");
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="flex items-center justify-center h-screen">
+      <div className="shadow-xl card w-96 bg-base-100">
         <div className="card-body">
-          <h2 className="card-title justify-center">SignUp</h2>
+          <h2 className="justify-center card-title">SignUp</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-xs">
+            <div className="w-full max-w-xs form-control">
               <label className="label">Name</label>
               <input
                 type="text"
                 placeholder="Your Name"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full max-w-xs input input-bordered"
                 {...register("name", {
                   required: {
                     value: true,
@@ -76,12 +78,12 @@ const SignUp = () => {
               </label>
             </div>
 
-            <div className="form-control w-full max-w-xs">
+            <div className="w-full max-w-xs form-control">
               <label className="label">Email</label>
               <input
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full max-w-xs input input-bordered"
                 {...register("email", {
                   required: {
                     value: true,
@@ -102,12 +104,12 @@ const SignUp = () => {
                 )}
               </label>
             </div>
-            <div className="form-control w-full max-w-xs">
+            <div className="w-full max-w-xs form-control">
               <label className="label">Password</label>
               <input
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full max-w-xs input input-bordered"
                 {...register("password", {
                   required: {
                     value: true,
@@ -134,7 +136,7 @@ const SignUp = () => {
             </div>
             {signInErrors}
             <input
-              className="btn btn-primary w-full max-w-xs text-white"
+              className="w-full max-w-xs text-white btn btn-primary"
               type="submit"
               value="SIGNUP"
             />
@@ -148,8 +150,8 @@ const SignUp = () => {
 
           <div className="divider">OR</div>
           <button
-            onClick={() => signInWithGoogle()}
-            className="btn btn-outline bg-secondary text-white"
+            onClick={() => signInWithGoogle().then(() => navigate(from))}
+            className="text-white btn btn-outline bg-secondary"
           >
             Continue With Google
           </button>

@@ -9,6 +9,9 @@ import auth from "../firebase.init";
 import useToken from "./Hooks/UseToken";
 const LogIn = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const {
@@ -19,9 +22,6 @@ const LogIn = () => {
 
   const [token] = useToken(user || gUser);
 
-  let navigate = useNavigate();
-  let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
   let signInErrors;
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const LogIn = () => {
   if (loading || gLoading) {
     return <button className="block mx-auto btn loading">loading</button>;
   }
-
+  console.log(from);
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password).then(() => {
       navigate(from);
@@ -124,7 +124,7 @@ const LogIn = () => {
 
           <div className="divider">OR</div>
           <button
-            onClick={() => signInWithGoogle()}
+            onClick={() => signInWithGoogle().then(() => navigate(from))}
             className="text-white btn btn-outline bg-secondary"
           >
             Continue With Google
